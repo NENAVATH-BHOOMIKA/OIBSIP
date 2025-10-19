@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bhoomika Nenavath — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1113;
+      --card:#16171a;
+      --muted:#bfc6cc;
+      --accent:#7be495;
+      --accent-2:#f1c232;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg, #0b0c0d 0%, #0f1113 100%);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* --- layout --- */
+    .wrap{
+      max-width:var(--max-width);
+      margin:40px auto;
+      padding:24px;
+    }
+
+    header.site-header{
+      position:sticky;
+      top:14px;
+      z-index:60;
+      background:linear-gradient(180deg, rgba(16,17,18,0.6), rgba(16,17,18,0.3));
+      backdrop-filter: blur(6px);
+      border-radius:14px;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--muted);
+    }
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#04110a;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 6px 20px rgba(11,12,13,0.6);
+    }
+    nav{
+      margin-left:auto;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:14px;
+    }
+    nav a.active, nav a:hover{
+      color:#08100a;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    }
+    .cta-download{
+      margin-left:10px;
+      border:1px solid rgba(255,255,255,0.06);
+      padding:8px 12px;border-radius:8px;font-weight:600;color:var(--muted);text-decoration:none;
+      backdrop-filter: blur(2px);
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      margin-top:28px;
+    }
+
+    /* hero text */
+    .hero-text h1{
+      margin:0 0 12px 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size:36px;
+      color: #ffffff;
+      letter-spacing:0.2px;
+    }
+    .hero-text p.lead{
+      color: #cbd5da;
+      margin:0 0 18px 0;
+      max-width: 62ch;
+      font-size:16px;
+    }
+
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#04110a;
+      padding:10px 14px;border-radius:10px;font-weight:700;border:none;cursor:pointer;
+      box-shadow: 0 8px 20px rgba(11,12,13,0.6);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+      font-weight:600;
+    }
+
+    /* hero card (right) */
+    .hero-card{
+      background:var(--card);
+      border-radius:12px;
+      padding:18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .hero-card h4{color:var(--accent-2); margin:0 0 8px 0}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+    .meta span{background:var(--glass);padding:8px 10px;border-radius:8px}
+
+    /* sections */
+    section.section{
+      margin-top:40px;
+      padding:28px;
+      border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    section h2{
+      margin:0 0 14px 0;font-family: 'Montserrat', sans-serif;color:#fff;font-size:20px;
+    }
+
+    /* Projects grid */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap:16px;
+    }
+    .project{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+    }
+    .project h3{margin:0 0 8px 0;color:#fff;font-size:16px}
+    .project p{margin:0 0 12px 0;color:var(--muted);font-size:14px}
+    .project .actions{display:flex;gap:8px}
+    .view-btn{
+      background:transparent;color:var(--accent-2);border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:600;
+    }
+
+    /* Skills */
+    .skills-list{display:flex;gap:8px;flex-wrap:wrap}
+    .skill{background:var(--glass);padding:8px 10px;border-radius:999px;font-weight:600;color:var(--muted)}
+
+    /* two-column rows */
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card p{margin:0;color:var(--muted)}
+
+    /* contact form */
+    form.contact-form{display:grid;gap:12px}
+    input,textarea{
+      background:transparent;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:8px;color:var(--muted);resize:vertical;
+    }
+    input::placeholder, textarea::placeholder{color:rgba(191,198,204,0.5)}
+
+    footer{margin-top:28px;text-align:center;color:rgba(191,198,204,0.6);font-size:14px;padding-bottom:80px}
+
+    /* modal */
+    .modal-backdrop{
+      display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:120;align-items:center;justify-content:center;padding:24px;
+    }
+    .modal-backdrop.active{display:flex}
+    .modal{
+      width:100%;max-width:720px;background:linear-gradient(180deg,#0f1113,#141516);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7);color:var(--muted);
+    }
+    .modal header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .modal h3{margin:0;color:var(--accent-2)}
+    .modal .close-btn{background:transparent;border:0;color:var(--muted);font-size:20px;cursor:pointer}
+    .modal p{margin-top:12px}
+
+    /* small screens */
+    @media (max-width:880px){
+      .hero{grid-template-columns: 1fr; padding-bottom:10px}
+      nav{display:none}
+      header.site-header{padding:10px}
+      .row{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      .wrap{padding:10px;margin:18px auto}
+      .brand .name{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <!-- Header -->
+    <header class="site-header" role="banner" aria-label="Main header">
+      <a class="brand" href="#home" onclick="scrollToSection(event,'home')">
+        <div class="logo">BN</div>
+        <div class="name">
+          <div style="font-weight:700;color:#fff">Bhoomika Nenavath</div>
+          <div style="font-size:12px;color:var(--muted)">Information Technology • Web & ML</div>
+        </div>
+      </a>
+
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="#home" data-target="home" onclick="scrollToSection(event,'home')">Home</a>
+        <a href="#about" data-target="about" onclick="scrollToSection(event,'about')">About</a>
+        <a href="#projects" data-target="projects" onclick="scrollToSection(event,'projects')">Projects</a>
+        <a href="#skills" data-target="skills" onclick="scrollToSection(event,'skills')">Skills</a>
+        <a href="#education" data-target="education" onclick="scrollToSection(event,'education')">Education</a>
+        <a href="#contact" data-target="contact" onclick="scrollToSection(event,'contact')">Contact</a>
+      </nav>
+
+      <a class="cta-download" href="NBHOOMIKA reSUme.pdf" download>Download Resume</a>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero" aria-label="Home">
+      <div class="hero-text">
+        <h1>Hello — I'm Bhoomika</h1>
+        <p class="lead">I’m a final-year B.Tech (Information Technology) student who builds full-stack web apps and practical machine learning projects. I enjoy turning ideas into working products with clean code and thoughtful UX.</p>
+
+        <div class="hero-actions">
+          <button class="btn" onclick="scrollToSection(null,'projects')">View Projects</button>
+          <a class="btn secondary" href="https://github.com/NENAVATH-BHOOMIKA" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/bhoomika-nenavath" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-hidden="false">
+        <h4>Quick Info</h4>
+        <div class="meta" style="margin-top:8px">
+          <span>📍 Hyderabad, India</span>
+          <span>🎓 B.Tech (IT)</span>
+          <span>📧 nenavathbhoomika61@gmail.com</span>
+        </div>
+
+        <div style="margin-top:14px">
+          <strong style="color:#fff">Selected Projects</strong>
+          <ul style="margin:10px 0 0 0;padding-left:18px;color:var(--muted)">
+            <li>EGROCERY — Ecommerce backend (PHP/MySQL)</li>
+            <li>Driver Drowsiness Detection — CNN & OpenCV</li>
+            <li>Micro-Doppler Classification — Radar + ML</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" aria-label="About me">
+      <h2>About</h2>
+      <div class="row">
+        <div>
+          <p>I am a detail-oriented developer with hands-on experience building web applications (HTML/CSS/JS, PHP, Node.js) and machine learning models using Python. I’m comfortable working on the full stack — from designing responsive UI to building APIs and training models for real-time inference.</p>
+
+          <p>Interests: Computer Vision, Embedded Systems, Signal Processing, and building products that improve safety and convenience.</p>
+        </div>
+
+        <div>
+          <div class="card">
+            <strong>Contact</strong>
+            <p style="margin-top:8px">Email: <a href="mailto:nenavathbhoomika61@gmail.com">nenavathbhoomika61@gmail.com</a><br>
+            Phone: <a href="tel:+919182854057">+91 9182854057</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-label="Projects">
+      <h2>Projects</h2>
+      <div class="projects-grid" role="list">
+        <article class="project" role="listitem">
+          <h3>EGROCERY</h3>
+          <p>Online grocery system with cart, user accounts and admin dashboard. Backend: PHP + MySQL.</p>
+          <div class="actions">
+            <button class="view-btn" data-modal="m-egrocery">View Details</button>
+            <a class="view-btn" href="https://github.com/NENAVATH-BHOOMIKA" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+
+        <article class="project" role="listitem">
+          <h3>Driver Drowsiness Detection</h3>
+          <p>Realtime detection of yawns & eye-blinks using CNN + OpenCV to alert drivers and reduce accidents.</p>
+          <div class="actions">
+            <button class="view-btn" data-modal="m-drowsiness">View Details</button>
+            <a class="view-btn" href="https://github.com/NENAVATH-BHOOMIKA" target="_blank" rel="noopener">Source</a>
+          </div>
+        </article>
+
+        <article class="project" role="listitem">
+          <h3>Micro-Doppler Classification</h3>
+          <p>Research project: classify radar micro-Doppler signatures (drones, vehicles, humans) using ML classifiers.</p>
+          <div class="actions">
+            <button class="view-btn" data-modal="m-micro">View Details</button>
+            <a class="view-btn" href="https://github.com/NENAVATH-BHOOMIKA" target="_blank" rel="noopener">Report</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section" aria-label="Skills">
+      <h2>Skills</h2>
+      <div style="margin-bottom:12px" class="skills-list" aria-hidden="false">
+        <span class="skill">Python</span>
+        <span class="skill">Java</span>
+        <span class="skill">C++</span>
+        <span class="skill">HTML & CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Django / Node.js</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">Machine Learning</span>
+        <span class="skill">OpenCV</span>
+      </div>
+
+      <div class="row" style="margin-top:12px">
+        <div class="card">
+          <strong>Tools & Dev</strong>
+          <p>Git, GitHub, VSCode, Postman, Linux</p>
+        </div>
+        <div class="card">
+          <strong>ML / CV</strong>
+          <p>CNNs, TensorFlow/PyTorch, Data augmentation, Model evaluation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section" aria-label="Education">
+      <h2>Education</h2>
+      <div class="row">
+        <div class="card">
+          <strong>B.Tech — Information Technology</strong>
+          <p>BV Raju Institute of Technology (2023 - 2026)<br>CGPA: 7.99/10</p>
+        </div>
+        <div class="card">
+          <strong>Diploma — Civil Engineering</strong>
+          <p>Osmania University (2020 - 2023)<br>CGPA: 7.99/10</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-label="Contact">
+      <h2>Contact</h2>
+      <div class="row">
+        <div>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a demo form — replace with your backend or email handler.');">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn">Send Message</button>
+              <a class="btn secondary" href="NBHOOMIKA reSUme.pdf" download>Download Resume</a>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <div class="card">
+            <strong>Reach me at</strong>
+            <p>Email: <a href="mailto:nenavathbhoomika61@gmail.com">nenavathbhoomika61@gmail.com</a><br>
+            Phone: <a href="tel:+919182854057">+91 9182854057</a></p>
+            <div style="margin-top:12px;display:flex;gap:10px">
+              <a class="view-btn" href="https://github.com/NENAVATH-BHOOMIKA" target="_blank">GitHub</a>
+              <a class="view-btn" href="https://www.linkedin.com/in/bhoomika-nenavath" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Bhoomika Nenavath — Built with HTML, CSS & JS
+    </footer>
+  </div>
+
+  <!-- Modals for projects -->
+  <div id="m-egrocery" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <header>
+        <h3>EGROCERY — Project Details</h3>
+        <button class="close-btn" data-close>&times;</button>
+      </header>
+      <p><strong>Overview:</strong> An ecommerce grocery platform supporting product listing, cart, orders, and admin dashboard.</p>
+      <p><strong>Stack:</strong> PHP, MySQL, HTML/CSS, JS. Features: user auth, admin product management, order handling.</p>
+      <p><strong>What I built:</strong> Database design, backend APIs for cart & orders, responsive front-end pages, and admin controls.</p>
+    </div>
+  </div>
+
+  <div id="m-drowsiness" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <header>
+        <h3>Driver Drowsiness Detection — Project Details</h3>
+        <button class="close-btn" data-close>&times;</button>
+      </header>
+      <p><strong>Overview:</strong> Real-time monitoring using webcam input and a CNN model to detect eye closure and yawning.</p>
+      <p><strong>Stack:</strong> Python, OpenCV, TensorFlow/Keras. Includes data preprocessing, CNN model training, and real-time inference.</p>
+      <p><strong>Impact:</strong> Prototype aimed at reducing accidents by alerting drivers when fatigue is detected.</p>
+    </div>
+  </div>
+
+  <div id="m-micro" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <header>
+        <h3>Micro-Doppler Classification — Project Details</h3>
+        <button class="close-btn" data-close>&times;</button>
+      </header>
+      <p><strong>Overview:</strong> Classification of radar micro-Doppler signatures to identify drones, vehicles and humans.</p>
+      <p><strong>Stack:</strong> Signal processing tools, Python, feature extraction, SVM/ML classifiers.</p>
+      <p><strong>Result:</strong> Experiments with feature engineering and classification accuracy analysis.</p>
+    </div>
+  </div>
+
+  <script>
+    // active year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // scroll & active link
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section[id]');
+
+    function scrollToSection(e, id){
+      if(e) e.preventDefault();
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+      // handle active class (for desktop nav)
+      navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === id));
+    }
+
+    // update active on scroll (intersection observer)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector(nav a[data-target="${id}"]);
+        if(link) link.classList.toggle('active', entry.isIntersecting);
+      });
+    }, {threshold: 0.45});
+
+    sections.forEach(s => observer.observe(s));
+
+    // Modal logic (accessible)
+    const modalButtons = document.querySelectorAll('[data-modal]');
+    const modals = document.querySelectorAll('.modal-backdrop');
+
+    modalButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = btn.getAttribute('data-modal');
+        openModal(id, btn);
+      });
+    });
+
+    function openModal(id, opener){
+      const modal = document.getElementById(id);
+      if(!modal) return;
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden','false');
+      // store opener to restore focus later
+      modal._opener = opener;
+      // trap focus inside modal
+      trapFocus(modal);
+    }
+
+    function closeModal(modal){
+      if(!modal) return;
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      if(modal._opener) modal._opener.focus();
+    }
+
+    // close buttons
+    document.querySelectorAll('[data-close]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const modal = btn.closest('.modal-backdrop');
+        closeModal(modal);
+      });
+    });
+
+    // click outside to close
+    modals.forEach(m => {
+      m.addEventListener('click', (e) => {
+        if(e.target === m) closeModal(m);
+      });
+    });
+
+    // ESC to close
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') {
+        modals.forEach(m => { if(m.classList.contains('active')) closeModal(m); });
+      }
+      // quick nav: numbers 1-6 to go sections
+      if(document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){
+        if(e.key === '1') scrollToSection(null,'home');
+        if(e.key === '2') scrollToSection(null,'about');
+        if(e.key === '3') scrollToSection(null,'projects');
+        if(e.key === '4') scrollToSection(null,'skills');
+        if(e.key === '5') scrollToSection(null,'education');
+        if(e.key === '6') scrollToSection(null,'contact');
+      }
+    });
+
+    // focus trap helper (simple)
+    function trapFocus(modal){
+      const focusable = modal.querySelectorAll('a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])');
+      if(focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      first.focus();
+
+      function handleKey(e){
+        if(e.key !== 'Tab') return;
+        if(e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if(!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
+      }
+      modal.addEventListener('keydown', handleKey);
+
+      // remove listener when modal closes
+      const obs = new MutationObserver(() => {
+        if(!modal.classList.contains('active')){
+          modal.removeEventListener('keydown', handleKey);
+          obs.disconnect();
+        }
+      });
+      obs.observe(modal, {attributes:true, attributeFilter:['class']});
+    }
+
+    // attach data-modal for project view buttons (non-nav)
+    document.querySelectorAll('.view-btn[data-modal]').forEach(b=>{
+      b.addEventListener('click', e=>{
+        const id = b.getAttribute('data-modal');
+        openModal(id, b);
+      });
+    });
+
+  </script>
+</body>
+</html>
